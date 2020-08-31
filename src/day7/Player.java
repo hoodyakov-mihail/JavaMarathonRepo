@@ -20,8 +20,8 @@ info() -  выводит сообщение в зависимости от ко�
  */
 public class Player {
     private int stamina;
-    private final int MAX_STAMINA = 100;
-    private final int MIN_STAMINA = 0;
+    private final static int MAX_STAMINA = 100;
+    private final static int MIN_STAMINA = 0;
     private static int countPlayers;
 
     public Player() {
@@ -33,10 +33,12 @@ public class Player {
     }
 
     public void run() {
+        if (stamina == 0) return;
         if (stamina > MIN_STAMINA) {
             stamina--;
             System.out.println("Игрок бежит");
-        } else {
+        }
+        if (stamina == 0) {
             countPlayers--;
             System.out.println("Нужен отдых, игрок уходит с поля");
         }

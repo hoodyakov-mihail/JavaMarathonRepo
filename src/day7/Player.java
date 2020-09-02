@@ -37,10 +37,10 @@ public class Player {
         if (stamina > MIN_STAMINA) {
             stamina--;
             System.out.println("Игрок бежит");
-        }
-        if (stamina == 0) {
-            countPlayers--;
-            System.out.println("Нужен отдых, игрок уходит с поля");
+            if (stamina == 0) {
+                countPlayers--;
+                System.out.println("Нужен отдых, игрок уходит с поля");
+            }
         }
     }
     public void info() {

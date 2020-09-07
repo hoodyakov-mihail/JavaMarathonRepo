@@ -32,7 +32,8 @@ public class User {
         return subscriptions.contains(user);
     }
     public boolean isFriend(User user) {
-        return user.subscriptions.contains(this);
+        if (user.subscriptions.contains(this) && this.subscriptions.contains(user)) return true;
+        else return false;
     }
     public void sendMessage(User user, String text) {
         MessageDatabase.sendMessage(this,user,text);

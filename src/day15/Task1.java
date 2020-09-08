@@ -14,15 +14,12 @@ public class Task1 {
         Scanner scan = new Scanner(read);
         PrintWriter pw = new PrintWriter(write);
 
-        int count = 0;
-        int i = 0;
         while(scan.hasNextLine()) {
             String[] array = scan.nextLine().split(";");
             if (Integer.parseInt(array[2]) == 0) {
                 pw.println(array[0]+", "+array[1]+", "+array[2]);
                 //System.out.println(array[0]+", "+array[1]+", "+array[2]);
             }
-            i++;
         }
         scan.close();
         pw.close();

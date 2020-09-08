@@ -18,7 +18,10 @@ public class Task1 {
 
         String line = scan.nextLine();
         String[] sNumbers = line.split(" ");
-        if(sNumbers.length != 10){
+        int sum = 0;
+        if(sNumbers.length == 10){
+            for (int i = 0; i < sNumbers.length ; i++) sum +=Integer.parseInt(sNumbers[i]);
+        } else {
             try {
                 throw new IOException();
             } catch ( IOException e) {
@@ -27,13 +30,6 @@ public class Task1 {
         }
         scan.close();
 
-        int[] numbers = new int[sNumbers.length];
-        int sum = 0;
-        for (int i = 0; i < sNumbers.length ; i++) {
-            numbers[i] = Integer.parseInt(sNumbers[i]);
-            sum +=numbers[i];
-        }
-        //System.out.println(Arrays.toString(numbers));
         System.out.println(sum);
     }
 }

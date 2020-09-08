@@ -24,22 +24,24 @@ public class Person {
         List<String> people = new ArrayList<>();
         File file = new File("C:\\JavaMarathon2020\\src\\day14\\people");
         Scanner scan = new Scanner(file);
+
+        List<Person> persons = new ArrayList<>();
         int i = 0;
         while (scan.hasNextLine()) {
-            people.add(i, scan.nextLine());
+            people.add(scan.nextLine());
+            String[] peopleCreate = people.get(i).split(" ");
+            if(Integer.parseInt(peopleCreate[1]) >= 0) {
+                persons.add(new Person(peopleCreate[0], Integer.parseInt(peopleCreate[1])));
+            } else {
+                try {
+                    throw new IOException();
+                } catch (IOException e) {
+                    System.out.println("Некорректный входной файл");
+                }
+            }
             i++;
         }
-        List<Person> persons = new ArrayList<>();
-        for (int j = 0; j < people.size(); j++) {
-            String[] peopleCreate = people.get(j).split(" ");
-            //System.out.println(Arrays.toString(peopleCreate));
-            if(Integer.parseInt(peopleCreate[1]) < 0) try {
-                throw new IOException();
-            } catch (IOException e) {
-                System.out.println("Некорректный входной файл");
-            }
-            persons.add(new Person(peopleCreate[0], Integer.parseInt(peopleCreate[1])));
-        }
+
         scan.close();
         return persons;
     }

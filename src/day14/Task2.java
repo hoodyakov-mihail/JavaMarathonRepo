@@ -17,6 +17,16 @@ public class Task2 {
             System.out.println("Файл не найден");
         }
 
+        System.out.println(people.toString());
+    }
+
+    public static List<String> parseFileToStringList() throws FileNotFoundException {
+        List<String> people = new ArrayList<>();
+        File file = new File("C:\\JavaMarathon2020\\src\\day14\\people");
+        Scanner scan = new Scanner(file);
+        while (scan.hasNextLine()) {
+            people.add(scan.nextLine());
+        }
         //Проверка на некорретность входного файла
         for (int i = 0; i < people.size(); i++) {
             String[] sNumbers = people.get(i).split(" ");
@@ -26,19 +36,6 @@ public class Task2 {
             } catch (IOException e) {
                 System.out.println("Некорректный входной файл");
             }
-        }
-        //Вывод в консоль
-        System.out.println(people.toString());
-    }
-
-    public static List<String> parseFileToStringList() throws FileNotFoundException {
-        List<String> people = new ArrayList<>();
-        File file = new File("C:\\JavaMarathon2020\\src\\day14\\peoples");
-        Scanner scan = new Scanner(file);
-        int i = 0;
-        while (scan.hasNextLine()) {
-            people.add(i, scan.nextLine());
-            i++;
         }
         scan.close();
         return people;
